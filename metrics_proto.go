@@ -156,7 +156,7 @@ func (se *statsExporter) convertSummaryMetrics(summary *metricspb.Metric) []*met
 		if len(sumTss) > 0 {
 			metric := &metricspb.Metric{
 				MetricDescriptor: &metricspb.MetricDescriptor{
-					Name:        fmt.Sprintf("%s_summary_sum", summary.GetMetricDescriptor().GetName()),
+					Name:        fmt.Sprintf("%s/sum", summary.GetMetricDescriptor().GetName()),
 					Description: summary.GetMetricDescriptor().GetDescription(),
 					Type:        metricspb.MetricDescriptor_CUMULATIVE_DOUBLE,
 					Unit:        summary.GetMetricDescriptor().GetUnit(),
@@ -170,7 +170,7 @@ func (se *statsExporter) convertSummaryMetrics(summary *metricspb.Metric) []*met
 		if len(countTss) > 0 {
 			metric := &metricspb.Metric{
 				MetricDescriptor: &metricspb.MetricDescriptor{
-					Name:        fmt.Sprintf("%s_summary_count", summary.GetMetricDescriptor().GetName()),
+					Name:        fmt.Sprintf("%s/count", summary.GetMetricDescriptor().GetName()),
 					Description: summary.GetMetricDescriptor().GetDescription(),
 					Type:        metricspb.MetricDescriptor_CUMULATIVE_INT64,
 					Unit:        "1",
@@ -186,7 +186,7 @@ func (se *statsExporter) convertSummaryMetrics(summary *metricspb.Metric) []*met
 			lks = append(lks, percentileLabelKey)
 			metric := &metricspb.Metric{
 				MetricDescriptor: &metricspb.MetricDescriptor{
-					Name:        fmt.Sprintf("%s_summary_percentile", summary.GetMetricDescriptor().GetName()),
+					Name:        fmt.Sprintf("%s/percentile", summary.GetMetricDescriptor().GetName()),
 					Description: summary.GetMetricDescriptor().GetDescription(),
 					Type:        metricspb.MetricDescriptor_GAUGE_DOUBLE,
 					Unit:        summary.GetMetricDescriptor().GetUnit(),
